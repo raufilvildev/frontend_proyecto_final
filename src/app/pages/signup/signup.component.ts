@@ -14,6 +14,7 @@ export class SignupComponent {
     lastName: new FormControl(''),
     email: new FormControl(''),
     phone: new FormControl(''),
+    birthDate: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
     passwordRepeat: new FormControl(''),
