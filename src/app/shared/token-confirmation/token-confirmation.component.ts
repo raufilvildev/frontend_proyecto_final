@@ -52,9 +52,10 @@ export class TokenConfirmationComponent {
   }
 
   async ngOnInit() {
-    if (!this.user.email) {
+    if (!this.user.email && !this.user.id) {
       this.router.navigate(['home']);
     }
+    setTimeout(() => this.usersService.remove(this.user.id), 300000); // TO-DO: Desde email_confirmation, pasados los 5 minutos borramos el usuario
     await this.getToken();
   }
 }

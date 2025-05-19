@@ -32,4 +32,8 @@ export class UsersService {
   create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
   }
+
+  remove(user_id: any) {
+    return lastValueFrom(this.httpClient.delete<any>(this.endpoint, user_id));
+  }
 }
