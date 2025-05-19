@@ -13,23 +13,23 @@ export class UsersService {
 
   formData: any | undefined;
 
-  setFormData = (data: any) => {
+  setFormData(data: any) {
     this.formData = data;
   }
 
-  getFormData = (): any => {
+  getFormData(): any {
     return this.formData;
   }
 
-  clearFormData = () => {
+  clearFormData() {
     this.formData = undefined;
   }
 
-  getToken = async (email: string) => {
+  async getToken(email: string) {
     return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/token?email=${email}`));
   }
 
-  create = (user: any) => {
+  create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
   }
 }
