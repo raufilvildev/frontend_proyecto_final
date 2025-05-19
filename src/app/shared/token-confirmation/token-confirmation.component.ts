@@ -52,7 +52,7 @@ export class TokenConfirmationComponent {
   }
 
   async ngOnInit() {
-    if (!this.user) {
+    if (!this.user.email) {
       this.router.navigate(['home']);
     }
     await this.getToken();

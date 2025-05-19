@@ -13,5 +13,8 @@ export class ChangePasswordConfirmationComponent {
   user: any;
   ngOnInit() {
     this.user = this.usersService.getFormData();
+    this.user = {
+      email: undefined
+    }
   }
 }

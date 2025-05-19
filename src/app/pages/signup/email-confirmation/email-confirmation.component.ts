@@ -20,7 +20,7 @@ export class EmailConfirmationComponent {
       birth_date: "2000-08-01",
       gender: "M",
       phone: "647065168",
-      email: "raufilvil@gmail.com",
+      email: undefined,
       username: "raufilvil",
       password: "1234"
     }
