@@ -2,7 +2,6 @@ import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
-import { toast } from 'sonner';
 
 @Component({
   selector: 'app-token-confirmation',
@@ -11,10 +10,12 @@ import { toast } from 'sonner';
   styleUrl: './token-confirmation.component.css'
 })
 export class TokenConfirmationComponent {
-  @Input() user: any;
   usersService = inject(UsersService);
   router = inject(Router);
 
+  @Input() user: any;
+  @Input() isSignup: boolean = true;
+  
   token: string = "";
   isCorrectToken: boolean = true;
   errorServer = false;
@@ -27,12 +28,12 @@ export class TokenConfirmationComponent {
   async create() {
     try {
       const result = await this.usersService.create(this.user);
+      this.usersService.clearFormData();
       this.router.navigate(['dashboard', result.insert_response.insertId]);
     } catch (error) {
       this.isCorrectToken = true;
       this.errorServer = true;
     }
-    
   }
 
   onSubmit(tokenForm: any) {
@@ -42,14 +43,18 @@ export class TokenConfirmationComponent {
       return
     }
     
-    this.create()
+    if (this.isSignup) {
+      this.create()
+      return
+    }
+
+    this.router.navigate([ 'login', 'change_password', this.user.email ]);
   }
 
   async ngOnInit() {
-    try {
-      await this.getToken();
-    } catch (error: any) {
-      toast.error(error.message);
+    if (!this.user) {
+      this.router.navigate(['home']);
     }
+    await this.getToken();
   }
 }
