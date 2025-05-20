@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   <label for="firstName">Nombre</label>
   <input type="text" id="firstName" formControlName="firstName" />
   <label for="lastName">Apellidos</label>
@@ -15,6 +15,8 @@
   <input type="password" id="password" formControlName="password" />
   <label for="passwordRepeat">Confirmación de contraseña</label>
   <input type="password" id="password" formControlName="passwordRepeat" />
+  <p>Completa todos los campos para poder registrarme</p>
+  <button type="submit" [disabled]="!signupForm.valid">Submit</button>
 </form>
 
 <router-outlet />
