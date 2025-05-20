@@ -28,7 +28,7 @@ export class SignupComponent {
         Validators.minLength(2),
         Validators.maxLength(100),
       ]),
-      // Ejemplos válidos:
+      // Valid examples:
       // usuario@gmail.com
       // nombre.apellido+test@dominio.co.uk
       // user_123@empresa.org
@@ -36,7 +36,7 @@ export class SignupComponent {
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
       ]),
-      // Ejemplos válidos:
+      // Valid examples:
       // +34647065168
       // 647065168
       // 123456789012345
@@ -60,17 +60,44 @@ export class SignupComponent {
     { validators: this.passwordMatchValidator }
   );
 
-  // https://angular.dev/guide/forms/form-validation#validating-input-in-reactive-forms
-  // https://angular.dev/guide/forms/reactive-forms#grouping-form-controls
-  // https://github.com/gtarrojo/act6CRUD/blob/main/src/app/pages/home/user-form/user-form.component.ts
-
-  // validator para passwordRepeat
+  // validator for passwordRepeat
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('passwordRepeat')?.value;
 
     return password === confirmPassword ? null : { passwordNotMatch: true };
   }
+
+  // visual UI user input checks
+
+  checkValidControl(controlName: string): boolean | undefined {
+    return (
+      this.signupForm.get(controlName)?.valid &&
+      (this.signupForm.get(controlName)?.touched ||
+        this.signupForm.get(controlName)?.dirty)
+    );
+  }
+
+  checkInvalidControl(controlName: string): boolean | undefined {
+    return (
+      this.signupForm.get(controlName)?.invalid &&
+      (this.signupForm.get(controlName)?.touched ||
+        this.signupForm.get(controlName)?.dirty)
+    );
+  }
+
+  checkErrorControl(
+    controlName: string,
+    errorName: string
+  ): boolean | undefined {
+    return (
+      this.signupForm.get(controlName)?.hasError(errorName) &&
+      (this.signupForm.get(controlName)?.touched ||
+        this.signupForm.get(controlName)?.dirty)
+    );
+  }
+
+  // SUBMIT
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
