@@ -30,13 +30,11 @@ export class UsersService {
 
   create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
-  };
-
   }
 
   setToken(user_id: number) {
     return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/${user_id}`,{}));
-  };
+  }
 
   resetToken(user_id: number) {
     return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/reset/${user_id}`,{}));
