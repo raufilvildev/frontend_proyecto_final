@@ -10,11 +10,9 @@ import { UsersService } from '../../../services/users.service';
 })
 export class ChangePasswordConfirmationComponent {
   usersService = inject(UsersService);
-  user: any;
+  user_id: number = 0;
   ngOnInit() {
-    this.user = this.usersService.getFormData();
-    this.user = {
-      email: undefined
-    }
+    this.user_id = this.usersService.getFormData().id;
+    this.user_id = 37;
   }
 }

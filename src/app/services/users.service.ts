@@ -25,12 +25,24 @@ export class UsersService {
     this.formData = undefined;
   }
 
-  async getToken(email: string) {
-    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/token?email=${email}`));
+  getById(user_id: number) {
+    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/${user_id}`));
   }
 
   create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
+  }
+
+  setToken(user_id: number) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/${user_id}`,{}));
+  };
+
+  resetToken(user_id: number) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/reset/${user_id}`,{}));
+  }
+
+  confirmEmail(user_id: number, token_input: string) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/confirm_email/${user_id}`,{ token_input}));
   }
 
   remove(user_id: any) {

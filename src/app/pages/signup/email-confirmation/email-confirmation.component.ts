@@ -11,18 +11,10 @@ import { TokenConfirmationComponent } from "../../../shared/token-confirmation/t
 })
 export class EmailConfirmationComponent {
   usersService = inject(UsersService);
-  user: any;
+  user_id: number = 0;
 
   ngOnInit() {
-    this.user = this.usersService.getFormData();
-    this.user = { 
-      name: "Raúl Filigrana Villalba",
-      birth_date: "2000-08-01",
-      gender: "M",
-      phone: "647065168",
-      email: undefined,
-      username: "raufilvil",
-      password: "1234"
-    }
+    this.user_id = this.usersService.getFormData()?.id;
+    this.user_id = 37;
   }
 }
