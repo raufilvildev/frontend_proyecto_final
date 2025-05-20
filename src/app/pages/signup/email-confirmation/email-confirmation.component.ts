@@ -17,7 +17,7 @@ export class EmailConfirmationComponent {
     this.user = this.usersService.getFormData();
     this.user = {
       name: 'Raúl Filigrana Villalba',
-      birth_date: '2000-08-01',
+      birthDate: '2000-08-01',
       gender: 'M',
       phone: '647065168',
       email: 'raufilvil@gmail.com',
