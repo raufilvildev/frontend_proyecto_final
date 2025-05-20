@@ -12,25 +12,41 @@ export class UsersService {
 
   formData: any | undefined;
 
-  setFormData = (data: any) => {
+  setFormData(data: any) {
     this.formData = data;
   };
 
-  getFormData = (): any => {
+  getFormData(): any {
     return this.formData;
   };
 
-  clearFormData = () => {
+  clearFormData() {
     this.formData = undefined;
   };
 
-  getToken = async (email: string) => {
-    return lastValueFrom(
-      this.httpClient.get<any>(`${this.endpoint}/token?email=${email}`)
-    );
-  };
+  getById(user_id: number) {
+    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/${user_id}`));
+  }
 
-  create = (user: any) => {
+  create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
   };
+
+  }
+
+  setToken(user_id: number) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/${user_id}`,{}));
+  };
+
+  resetToken(user_id: number) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/reset/${user_id}`,{}));
+  }
+
+  confirmEmail(user_id: number, token_input: string) {
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/confirm_email/${user_id}`,{ token_input}));
+  }
+
+  remove(user_id: any) {
+    return lastValueFrom(this.httpClient.delete<any>(this.endpoint, user_id));
+  }
 }

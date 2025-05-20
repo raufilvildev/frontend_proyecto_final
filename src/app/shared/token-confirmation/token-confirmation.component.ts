@@ -13,48 +13,41 @@ export class TokenConfirmationComponent {
   usersService = inject(UsersService);
   router = inject(Router);
 
-  @Input() user: any;
+  @Input() user_id: number = 0;
   @Input() isSignup: boolean = true;
-  
+
+  user: any = {};
+
   token: string = "";
   isCorrectToken: boolean = true;
   errorServer = false;
 
-  async getToken() {
-    const result = await this.usersService.getToken(this.user.email);
-    this.token = result.token;
+  setToken(user_id: number) {
+    this.usersService.setToken(user_id);
+    setTimeout(() => this.usersService.resetToken(this.user_id), 300000);
   }
 
-  async create() {
+  async onSubmit(tokenForm: any) {
     try {
-      const result = await this.usersService.create(this.user);
-      this.usersService.clearFormData();
-      this.router.navigate(['dashboard', result.insert_response.insertId]);
+      const result = await this.usersService.confirmEmail(this.user_id, tokenForm.token_input);
+      if (this.isSignup) {
+        this.router.navigate([ 'dashboard', this.user.id ])
+        return
+      }
+      this.router.navigate([ 'login', 'change_password', this.user.id ]);
     } catch (error) {
-      this.isCorrectToken = true;
-      this.errorServer = true;
-    }
-  }
-
-  onSubmit(tokenForm: any) {
-    if (this.token !== tokenForm.token_input) {
       this.isCorrectToken = false;
       this.errorServer = false;
-      return
     }
-    
-    if (this.isSignup) {
-      this.create()
-      return
-    }
-
-    this.router.navigate([ 'login', 'change_password', this.user.email ]);
   }
 
   async ngOnInit() {
+    this.user = await this.usersService.getById(this.user_id);
+    
     if (!this.user) {
       this.router.navigate(['home']);
     }
-    await this.getToken();
+
+    this.setToken(this.user_id);
   }
 }
