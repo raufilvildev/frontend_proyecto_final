@@ -1,1 +1,32 @@
-<p>signup-form works!</p>
+<!-- WIP styles anf UI validation -->
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <label for="firstName">Nombre</label>
+  <input type="text" id="firstName" formControlName="firstName" />
+  <label for="lastName">Apellidos</label>
+  <input type="text" id="lastName" formControlName="lastName" />
+  <label for="email">Email</label>
+  <input type="email" id="email" formControlName="email" />
+  <label for="phone">Teléfono</label>
+  <input type="text" id="phone" formControlName="phone" />
+  <label for="birthDate">Fecha de nacimiento</label>
+  <div>
+    <label>Género</label>
+    <label>
+      <input type="radio" formControlName="gender" value="M" />
+      M
+    </label>
+    <label>
+      <input type="radio" formControlName="gender" value="F" />
+      F
+    </label>
+  </div>
+  <input type="date" id="birthDate" formControlName="birthDate" />
+  <label for="username">Nombre de usuario</label>
+  <input type="text" id="username" formControlName="username" />
+  <label for="password">Contraseña</label>
+  <input type="password" id="password" formControlName="password" />
+  <label for="passwordRepeat">Confirmación de contraseña</label>
+  <input type="password" id="password" formControlName="passwordRepeat" />
+  <p>Completa todos los campos para poder registrarme</p>
+  <button type="submit" [disabled]="!signupForm.valid">Submit</button>
+</form>
