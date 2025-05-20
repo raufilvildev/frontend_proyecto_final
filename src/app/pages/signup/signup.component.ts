@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -8,6 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +18,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
+  usersService = inject(UsersService);
+  router = inject(Router);
   signupForm = new FormGroup(
     {
       firstName: new FormControl('', [
@@ -45,6 +49,7 @@ export class SignupComponent {
         Validators.pattern(/^\+?\d{9,15}$/),
       ]),
       birthDate: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
       username: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -99,8 +104,15 @@ export class SignupComponent {
 
   // SUBMIT
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.signupForm.value);
+  //WIP añadir SONNER O SWEET ALERT ??
+
+  async onSubmit() {
+    let response: any;
+    try {
+      response = await this.usersService.create(this.signupForm.value);
+      this.router.navigate(['home']);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

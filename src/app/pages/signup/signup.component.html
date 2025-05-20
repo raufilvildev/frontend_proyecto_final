@@ -1,3 +1,4 @@
+<!-- WIP styles anf UI validation -->
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   <label for="firstName">Nombre</label>
   <input type="text" id="firstName" formControlName="firstName" />
@@ -8,6 +9,17 @@
   <label for="phone">Teléfono</label>
   <input type="text" id="phone" formControlName="phone" />
   <label for="birthDate">Fecha de nacimiento</label>
+  <div>
+    <label>Género</label>
+    <label>
+      <input type="radio" formControlName="gender" value="masculino" />
+      M
+    </label>
+    <label>
+      <input type="radio" formControlName="gender" value="femenino" />
+      F
+    </label>
+  </div>
   <input type="date" id="birthDate" formControlName="birthDate" />
   <label for="username">Nombre de usuario</label>
   <input type="text" id="username" formControlName="username" />
