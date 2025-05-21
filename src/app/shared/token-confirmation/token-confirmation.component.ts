@@ -51,7 +51,15 @@ export class TokenConfirmationComponent {
     this.user = await this.usersService.getById(Number(this.user_id));
     
     if (!this.user) {
-      this.router.navigate(['home']);
+      this.router.navigate([ 'home' ]);
+      return
+    }
+
+    const isConfirmedEmailResult = await this.usersService.checkConfirmEmail(Number(this.user_id));
+    const is_confirmed_email = isConfirmedEmailResult.is_confirmed_email;
+
+    if (is_confirmed_email && this.isSignup) {
+      this.router.navigate([ 'login' ]);
     }
 
     this.setToken();

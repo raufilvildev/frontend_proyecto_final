@@ -14,6 +14,10 @@ export class UsersService {
     return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/${user_id}`));
   }
 
+  checkConfirmEmail(user_id: number) {
+    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/confirm_email/${user_id}`));
+  }
+
   create(user: any) {
     return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
   }
