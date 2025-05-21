@@ -10,22 +10,12 @@ export class UsersService {
   private endpoint = `${environment.host}/user`;
   private httpClient = inject(HttpClient);
 
-  formData: any | undefined;
-
-  setFormData(data: any) {
-    this.formData = data;
-  };
-
-  getFormData(): any {
-    return this.formData;
-  };
-
-  clearFormData() {
-    this.formData = undefined;
-  };
-
   getById(user_id: number) {
     return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/${user_id}`));
+  }
+
+  checkConfirmEmail(user_id: number) {
+    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/confirm_email/${user_id}`));
   }
 
   create(user: any) {
