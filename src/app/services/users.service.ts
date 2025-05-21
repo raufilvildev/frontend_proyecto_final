@@ -41,10 +41,10 @@ export class UsersService {
   }
 
   confirmEmail(user_id: number, token_input: string) {
-    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/confirm_email/${user_id}`,{ token_input}));
+    return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/confirm_email/${user_id}`,{ token_input }));
   }
 
   remove(user_id: any) {
-    return lastValueFrom(this.httpClient.delete<any>(this.endpoint, user_id));
+    return lastValueFrom(this.httpClient.delete<any>(`${this.endpoint}/${user_id}`));
   }
 }
