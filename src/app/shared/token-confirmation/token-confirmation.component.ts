@@ -13,10 +13,10 @@ export class TokenConfirmationComponent {
   usersService = inject(UsersService);
   router = inject(Router);
 
-  @Input() user_id: number = 0;
+  @Input() user_id: string = '';
   @Input() isSignup: boolean = true;
 
-  user: any = {};
+  user: any;
 
   token: string = "";
   isCorrectToken: boolean = true;
@@ -26,15 +26,15 @@ export class TokenConfirmationComponent {
     token_input: new FormControl('', [])
   })
 
-  setToken(user_id: number) {
-    this.usersService.setToken(user_id);
-    setTimeout(() => this.usersService.resetToken(this.user_id), 300000);
+  setToken() {
+    this.usersService.setToken(Number(this.user_id));
+    setTimeout(() => this.usersService.resetToken(Number(this.user_id)), 300000);
   }
 
   async onSubmit(tokenForm: any) {
     console.log(tokenForm);
     try {
-      await this.usersService.confirmEmail(this.user_id, tokenForm.token_input);
+      await this.usersService.confirmEmail(Number(this.user_id), tokenForm.token_input);
       if (this.isSignup) {
         this.router.navigate([ 'dashboard', this.user.id ])
         return
@@ -48,12 +48,12 @@ export class TokenConfirmationComponent {
   }
 
   async ngOnInit() {
-    this.user = await this.usersService.getById(this.user_id);
+    this.user = await this.usersService.getById(Number(this.user_id));
     
     if (!this.user) {
       this.router.navigate(['home']);
     }
 
-    this.setToken(this.user_id);
+    this.setToken();
   }
 }

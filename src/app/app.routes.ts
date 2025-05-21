@@ -15,12 +15,12 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'signup', component: SignupComponent, children: [
         { path: '', component: SignupFormComponent},
-        { path: 'email_confirmation', component: EmailConfirmationComponent}
+        { path: 'email_confirmation/:user_id', component: EmailConfirmationComponent}
     ] },
     { path: 'login', component: LoginComponent , children: [
         { path: '', component: LoginFormComponent },
-        { path: 'change_password_confirmation', component: ChangePasswordConfirmationComponent },
-        { path: 'change_password/:user_email', component: ChangePasswordComponent }
+        { path: 'change_password_confirmation/:user_id', component: ChangePasswordConfirmationComponent },
+        { path: 'change_password/:user_id', component: ChangePasswordComponent }
     ]},
     { path: 'dashboard/:user_id', component: DashboardComponent },
     { path: 'settings/:user_id', component: SettingsComponent },

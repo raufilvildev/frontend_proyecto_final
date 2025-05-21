@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { UsersService } from '../../../services/users.service';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TokenConfirmationComponent } from '../../../shared/token-confirmation/token-confirmation.component';
 
@@ -10,11 +9,5 @@ import { TokenConfirmationComponent } from '../../../shared/token-confirmation/t
   styleUrl: './email-confirmation.component.css',
 })
 export class EmailConfirmationComponent {
-  usersService = inject(UsersService);
-  user_id: number = 0;
-
-  ngOnInit() {
-    this.user_id = this.usersService.getFormData()?.id;
-    this.user_id = 37;
-  }
+  @Input() user_id: string = ''; 
 }
