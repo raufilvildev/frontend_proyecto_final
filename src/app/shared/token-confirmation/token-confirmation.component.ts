@@ -1,11 +1,11 @@
 import { Component, inject, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-token-confirmation',
-  imports: [ FormsModule ],
+  imports: [ ReactiveFormsModule ],
   templateUrl: './token-confirmation.component.html',
   styleUrl: './token-confirmation.component.css'
 })
@@ -22,14 +22,19 @@ export class TokenConfirmationComponent {
   isCorrectToken: boolean = true;
   errorServer = false;
 
+  tokenForm: FormGroup = new FormGroup({
+    token_input: new FormControl('', [])
+  })
+
   setToken(user_id: number) {
     this.usersService.setToken(user_id);
     setTimeout(() => this.usersService.resetToken(this.user_id), 300000);
   }
 
   async onSubmit(tokenForm: any) {
+    console.log(tokenForm);
     try {
-      const result = await this.usersService.confirmEmail(this.user_id, tokenForm.token_input);
+      await this.usersService.confirmEmail(this.user_id, tokenForm.token_input);
       if (this.isSignup) {
         this.router.navigate([ 'dashboard', this.user.id ])
         return
@@ -38,6 +43,7 @@ export class TokenConfirmationComponent {
     } catch (error) {
       this.isCorrectToken = false;
       this.errorServer = false;
+      this.tokenForm.reset();
     }
   }
 
