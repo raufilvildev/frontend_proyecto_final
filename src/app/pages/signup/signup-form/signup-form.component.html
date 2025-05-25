@@ -13,6 +13,8 @@
       id="firstName"
       formControlName="firstName"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('firstName')"
+      [class.border-red-500]="checkInvalidControl('firstName')"
     />
     @if (checkErrorControl("firstName","minlength")) {
     <p class="text-red-500 text-xs mt-1">
@@ -32,6 +34,8 @@
       id="lastName"
       formControlName="lastName"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('lastName')"
+      [class.border-red-500]="checkInvalidControl('lastName')"
     />
     @if (checkErrorControl("lastName","minlength")) {
     <p class="text-red-500 text-xs mt-1">
@@ -51,6 +55,8 @@
       id="email"
       formControlName="email"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('email')"
+      [class.border-red-500]="checkInvalidControl('email')"
     />
     @if (checkErrorControl("email","pattern")) {
     <p class="text-red-500 text-xs mt-1">Debe ser un email válido</p>
@@ -66,6 +72,8 @@
       id="phone"
       formControlName="phone"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('phone')"
+      [class.border-red-500]="checkInvalidControl('phone')"
     />
     @if (checkErrorControl("phone","pattern")) {
     <p class="text-red-500 text-xs mt-1">Debe ser un número válido</p>
@@ -81,6 +89,8 @@
       id="birthDate"
       formControlName="birthDate"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('birthDate')"
+      [class.border-red-500]="checkInvalidControl('birthDate')"
     />
   </div>
 
@@ -117,6 +127,8 @@
       id="username"
       formControlName="username"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('username')"
+      [class.border-red-500]="checkInvalidControl('username')"
     />
     @if (checkErrorControl("username","minlength")) {
     <p class="text-red-500 text-xs mt-1">Debe tener 3 carácteres</p>
@@ -136,6 +148,8 @@
       id="password"
       formControlName="password"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('password')"
+      [class.border-red-500]="checkInvalidControl('password')"
     />
     @if (checkErrorControl("password","pattern")) {
     <p class="text-red-500 text-xs mt-1">
@@ -156,19 +170,25 @@
       id="passwordRepeat"
       formControlName="passwordRepeat"
       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      [class.border-green-500]="checkValidControl('passwordRepeat')"
+      [class.border-red-500]="checkInvalidControl('passwordRepeat')"
     />
     @if (signupForm.hasError('passwordNotMatch')) {
     <p class="text-red-500 text-xs mt-1">Las contraseñas no coinciden</p>
     }
   </div>
-
+  @if (!signupForm.valid) {
   <p class="text-sm text-gray-600 text-center">
     Completa todos los campos para poder registrarte
   </p>
+  } @if (signupForm.valid) {
+  <p class="text-sm text-green-600 text-center">✅</p>
+  }
+
   <button
     type="submit"
     [disabled]="!signupForm.valid"
-    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition duration-200"
+    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed cursor-pointer transition duration-200"
   >
     Submit
   </button>
