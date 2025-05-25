@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
+import { IUser } from '../../../interfaces/iuser.interface';
 
 @Component({
   selector: 'app-signup-form',
@@ -107,9 +108,24 @@ export class SignupFormComponent {
   //WIP añadir SONNER O SWEET ALERT ??
 
   async onSubmit() {
+    const formValue = this.signupForm.value;
     let response: any;
+
+    // Transformar los datos del formulario al formato para el  back
+    const userRegistrationData: IUser = {
+      name: `${formValue.firstName} ${formValue.lastName}`,
+      email: formValue.email!,
+      phone: formValue.phone!,
+      birth_date: new Date(formValue.birthDate!),
+      gender: formValue.gender!,
+      username: formValue.username!,
+      password: formValue.password!,
+    };
+
+    console.log(userRegistrationData);
+
     try {
-      response = await this.usersService.create(this.signupForm.value);
+      response = await this.usersService.create(userRegistrationData);
       this.router.navigate(['home']);
     } catch (error) {
       console.log(error);
