@@ -105,7 +105,7 @@ export class SignupFormComponent {
 
   // SUBMIT
 
-  //WIP añadir SONNER O SWEET ALERT ??
+  //WIP añadir SONNER O SWEET ALERT ?? //
 
   async onSubmit() {
     const formValue = this.signupForm.value;
@@ -125,6 +125,7 @@ export class SignupFormComponent {
     console.log(userRegistrationData);
 
     try {
+      // Check for already register on back
       response = await this.usersService.create(userRegistrationData);
       this.router.navigate(['home']);
     } catch (error) {
