@@ -52,10 +52,12 @@ export class SignupFormComponent {
       username: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(20),
+        Validators.maxLength(50),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/),
       ]),
       password: new FormControl('', [
         Validators.required,
+        Validators.minLength(8),
         // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/),
       ]),
