@@ -6,5 +6,5 @@ export interface IUser {
   birth_date: Date;
   gender: string;
   username: string;
-  password: string;
+  password?: string;
 }

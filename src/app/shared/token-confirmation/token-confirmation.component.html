@@ -9,9 +9,6 @@
             @if (!isCorrectToken) {
                 <p class="text text-center text-red-500">El código que ingresaste no es correcto.</p>
             }
-            @if (errorServer) {
-                <p class="text text-center text-red-500">Ocurrió un error inesperado. Inténtalo más tarde.</p>
-            }
             <button type="submit" class="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition duration-200">
                 @if (isSignup) {
                     Completar registro

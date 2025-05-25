@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.test';
+import { IUser } from '../interfaces/iuser.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class UsersService {
   private httpClient = inject(HttpClient);
 
   getById(user_id: number) {
-    return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/${user_id}`));
+    return lastValueFrom(this.httpClient.get<IUser>(`${this.endpoint}/${user_id}`));
   }
 
   checkConfirmEmail(user_id: number) {
