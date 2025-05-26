@@ -12,32 +12,32 @@ import { LoginFormComponent } from './pages/login/login-form/login-form.componen
 import { Error404Component } from './pages/error404/error404.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: 'home', component: HomeComponent },
-  {
-    path: 'signup',
-    component: SignupComponent,
-    children: [
-      { path: '', component: SignupFormComponent },
-      {
-        path: 'email_confirmation/:user_id',
-        component: EmailConfirmationComponent,
-      },
-    ],
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    children: [
-      { path: '', component: LoginFormComponent },
-      {
-        path: 'change_password_confirmation/:user_id',
-        component: ChangePasswordConfirmationComponent,
-      },
-      { path: 'change_password/:user_id', component: ChangePasswordComponent },
-    ],
-  },
-  { path: 'dashboard/:user_id', component: DashboardComponent },
-  { path: 'settings/:user_id', component: SettingsComponent },
-  { path: '**', component: Error404Component },
+    { path: '', pathMatch: 'full', redirectTo: '/home' },
+    { path: 'home', component: HomeComponent },
+    {
+        path: 'signup',
+        component: SignupComponent,
+        children: [
+            { path: '', component: SignupFormComponent },
+            {
+                path: 'email_confirmation/:user_id',
+                component: EmailConfirmationComponent,
+            },
+        ],
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        children: [
+            { path: '', component: LoginFormComponent },
+            {
+                path: 'change_password_confirmation/:user_id',
+                component: ChangePasswordConfirmationComponent,
+            },
+            { path: 'change_password/:user_id', component: ChangePasswordComponent },
+        ],
+    },
+    { path: 'dashboard/:user_id', component: DashboardComponent },
+    { path: 'settings/:user_id', component: SettingsComponent },
+    { path: '**', component: Error404Component },
 ];
