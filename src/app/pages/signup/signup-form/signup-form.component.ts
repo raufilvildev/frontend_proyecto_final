@@ -52,7 +52,7 @@ export class SignupFormComponent {
             ]),
             passwordRepeat: new FormControl('', [Validators.required]),
         },
-        { validators: this.passwordMatchValidator }
+        { validators: this.passwordMatchValidator },
     );
 
     // validator for passwordRepeat

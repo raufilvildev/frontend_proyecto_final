@@ -3,5 +3,5 @@
     "useTabs": false,
     "htmlWhitespaceSensitivity": "ignore",
     "printWidth": 120,
-    "singleAttributePerLine": false
+    "singleAttributePerLine": true
 }

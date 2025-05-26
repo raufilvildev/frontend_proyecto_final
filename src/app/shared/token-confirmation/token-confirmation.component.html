@@ -7,7 +7,11 @@
             . Por favor, introduce el código a continuación para completar tu registro.
         </p>
 
-        <form class="space-y-4" [formGroup]="tokenForm" (ngSubmit)="onSubmit(tokenForm.value)">
+        <form
+            class="space-y-4"
+            [formGroup]="tokenForm"
+            (ngSubmit)="onSubmit(tokenForm.value)"
+        >
             <input
                 type="text"
                 placeholder="Código de verificación"
@@ -15,18 +19,25 @@
                 formControlName="token_input"
             />
             @if (!isCorrectToken) {
-            <p class="text text-center text-red-500">El código que ingresaste no es correcto.</p>
+                <p class="text text-center text-red-500">El código que ingresaste no es correcto.</p>
             }
             <button
                 type="submit"
                 class="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition duration-200"
             >
-                @if (isSignup) { Completar registro } @else { Confirmar }
+                @if (isSignup) {
+                    Completar registro
+                } @else {
+                    Confirmar
+                }
             </button>
         </form>
 
         <div class="mt-4 text-center">
-            <button class="text-sm text-blue-600 hover:underline cursor-pointer" (click)="setToken()">
+            <button
+                class="text-sm text-blue-600 hover:underline cursor-pointer"
+                (click)="setToken()"
+            >
                 ¿No has recibido el código? Volver a enviar
             </button>
         </div>
