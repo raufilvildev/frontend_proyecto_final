@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
     "@tailwindcss/postcss": "^4.1.7",
+    "angular-split": "^19.0.0",
     "daisyui": "^5.0.35",
     "ngx-toastr": "^19.0.0",
     "postcss": "^8.5.3",
