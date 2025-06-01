@@ -37,7 +37,7 @@ export const routes: Routes = [
             { path: 'change_password/:user_id', component: ChangePasswordComponent },
         ],
     },
-    { path: 'dashboard/:user_id', component: DashboardComponent },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'settings/:user_id', component: SettingsComponent },
     { path: '**', component: Error404Component },
 ];
