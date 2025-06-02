@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<as-split direction="horizontal" gutterSize="2" unit="percent">
+  <as-split-area [size]="20">
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+  </as-split-area>
+
+  <as-split-area [size]="60">
+    <app-dashboard-main></app-dashboard-main>
+  </as-split-area>
+
+  <as-split-area [size]="20">
+    <app-dashboard-task-details></app-dashboard-task-details>
+  </as-split-area>
+</as-split>

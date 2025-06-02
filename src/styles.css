@@ -10,3 +10,61 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+
+:root {
+  /*Primary colors */
+  --color-primary: #e9dcfa;
+  --color-primary-light: #f5ecff;
+  --color-primary-dark: #d2bdf2;
+
+  /* Secondary & accent colors */
+  --color-accent: #b48fe0;
+  --color-accent-dark: #9e74d0;
+
+  /* Backgrounds & panels */
+  --color-background: #ffffff;
+  --color-panel: #f8f5fc;
+
+  /* Grays & text colors */
+  --color-text-main: #2c2c2c;
+  --color-text-secondary: #6f6f6f;
+  --color-muted: #a1a1a1;
+  --color-border: #dddddd;
+
+  /* Interactions colors */
+  --color-hover: #d6c3ff;
+  --color-active: #b892ff;
+  --color-focus: #8a56e0;
+
+  /*Status colors */
+  --color-success: #4ade80;
+  --color-warning: #facc15;
+  --color-error: #f87171;
+
+  /*Typography */
+  --font-family: 'Inter', sans-serif;
+  --font-size-xs: 0.75rem;     
+  --font-size-sm: 0.875rem;   
+  --font-size-base: 1rem;     
+  --font-size-lg: 1.125rem;   
+  --font-size-xl: 1.5rem;      
+  --font-size-2xl: 2rem;      
+
+  /*Spacing */
+  --spacing-xs: 4px;     
+  --spacing-sm: 8px;     
+  --spacing-md: 16px;    
+  --spacing-lg: 24px;    
+  --spacing-xl: 32px;   
+  --spacing-2xl: 48px;   
+
+  /*Borders & shadows */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
