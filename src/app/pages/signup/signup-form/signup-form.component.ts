@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { IUser } from '../../../interfaces/iuser.interface';
+import dayjs from 'dayjs';
 
 @Component({
     selector: 'app-signup-form',
@@ -32,11 +33,6 @@ export class SignupFormComponent {
                 Validators.required,
                 Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
             ]),
-            // Valid examples:
-            // +34647065168
-            // 647065168
-            // 123456789012345
-            phone: new FormControl('', [Validators.required, Validators.pattern(/^\+?\d{9,15}$/)]),
             birthDate: new FormControl('', [Validators.required]),
             gender: new FormControl('', [Validators.required]),
             username: new FormControl('', [
@@ -96,10 +92,10 @@ export class SignupFormComponent {
 
         // Transformar los datos del formulario al formato para el  back
         const userRegistrationData: IUser = {
-            name: `${formValue.firstName} ${formValue.lastName}`,
+            first_name: formValue.firstName!,
+            last_name: formValue.lastName!,
             email: formValue.email!,
-            phone: formValue.phone!,
-            birth_date: this.formatDateMySQL(new Date(formValue.birthDate!)),
+            birth_date: dayjs(formValue.birthDate).format('YYYY-MM-DD'),
             gender: formValue.gender!,
             username: formValue.username!,
             password: formValue.password!,
@@ -114,13 +110,5 @@ export class SignupFormComponent {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    formatDateMySQL(date: Date): string {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}-${month}-${day}`;
     }
 }
