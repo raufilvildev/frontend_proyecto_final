@@ -1,4 +1,3 @@
-/* Formulario principal */
 .signup-form-root {
     max-width: 420px;
     margin: 0 auto;
@@ -11,7 +10,6 @@
     position: relative;
 }
 
-/* Título del formulario (si lo añades) */
 .signup-title {
     text-align: center;
     color: var(--color-text-main);
@@ -20,13 +18,11 @@
     margin-bottom: var(--spacing-xl);
 }
 
-/* Grupo de campos con animación */
 .signup-form-group {
     margin-bottom: var(--spacing-lg);
     position: relative;
 }
 
-/* Etiquetas mejoradas */
 .signup-label {
     color: var(--color-text-main);
     font-size: var(--font-size-sm);
@@ -36,7 +32,6 @@
     transition: color 0.2s ease;
 }
 
-/* Inputs mejorados */
 .signup-input {
     width: 100%;
     padding: var(--spacing-md);
@@ -60,7 +55,6 @@
     border-color: var(--color-hover);
 }
 
-/* Estados de validación mejorados */
 .signup-input.valid {
     border-color: var(--color-success);
     background: rgba(74, 222, 128, 0.05);
@@ -79,7 +73,6 @@
     box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
 }
 
-/* Mensajes de error mejorados */
 .signup-error {
     color: var(--color-error);
     font-size: var(--font-size-xs);
@@ -105,7 +98,6 @@
     }
 }
 
-/* Grupo de radios mejorado */
 .signup-radio-group {
     display: flex;
     gap: var(--spacing-xl);
@@ -132,7 +124,6 @@
     transform: scale(1.2);
 }
 
-/* Botón mejorado */
 .signup-btn {
     width: 100%;
     padding: var(--spacing-md) var(--spacing-lg);
@@ -152,13 +143,13 @@
 }
 
 .signup-btn::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
 }
 
@@ -181,7 +172,6 @@
     transform: translateY(0);
 }
 
-/* Mensajes de estado mejorados */
 .signup-help {
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
@@ -200,25 +190,28 @@
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
-/* Responsive mejorado */
 @media (max-width: 480px) {
     .signup-form-root {
         margin: var(--spacing-md);
         padding: var(--spacing-lg);
         max-width: none;
     }
-    
+
     .signup-radio-group {
         flex-direction: column;
         gap: var(--spacing-sm);
     }
 }
 
-/* Indicador de progreso (opcional) */
 .signup-progress {
     height: 4px;
     background: var(--color-border);
