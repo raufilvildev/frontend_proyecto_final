@@ -1,0 +1,235 @@
+/* Formulario principal */
+.signup-form-root {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--color-background);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    position: relative;
+}
+
+/* Título del formulario (si lo añades) */
+.signup-title {
+    text-align: center;
+    color: var(--color-text-main);
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Grupo de campos con animación */
+.signup-form-group {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+/* Etiquetas mejoradas */
+.signup-label {
+    color: var(--color-text-main);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    display: block;
+    transition: color 0.2s ease;
+}
+
+/* Inputs mejorados */
+.signup-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    color: var(--color-text-main);
+    background: var(--color-background);
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.signup-input:focus {
+    border-color: var(--color-focus);
+    box-shadow: 0 0 0 3px rgba(138, 86, 224, 0.1);
+    transform: translateY(-1px);
+}
+
+.signup-input:hover {
+    border-color: var(--color-hover);
+}
+
+/* Estados de validación mejorados */
+.signup-input.valid {
+    border-color: var(--color-success);
+    background: rgba(74, 222, 128, 0.05);
+}
+
+.signup-input.valid:focus {
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+
+.signup-input.invalid {
+    border-color: var(--color-error);
+    background: rgba(248, 113, 113, 0.05);
+}
+
+.signup-input.invalid:focus {
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+}
+
+/* Mensajes de error mejorados */
+.signup-error {
+    color: var(--color-error);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.2s ease-out;
+}
+
+.signup-error::before {
+    content: "⚠️";
+    margin-right: var(--spacing-xs);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grupo de radios mejorado */
+.signup-radio-group {
+    display: flex;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-sm);
+}
+
+.signup-radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.signup-radio-label:hover {
+    background: var(--color-hover);
+}
+
+.signup-radio {
+    margin-right: var(--spacing-sm);
+    accent-color: var(--color-accent);
+    transform: scale(1.2);
+}
+
+/* Botón mejorado */
+.signup-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.signup-btn:hover::before {
+    left: 100%;
+}
+
+.signup-btn:disabled {
+    background: var(--color-muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.signup-btn:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(180, 143, 224, 0.4);
+}
+
+.signup-btn:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* Mensajes de estado mejorados */
+.signup-help {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    font-style: italic;
+}
+
+.signup-success {
+    color: var(--color-success);
+    font-size: var(--font-size-lg);
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    font-weight: 600;
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Responsive mejorado */
+@media (max-width: 480px) {
+    .signup-form-root {
+        margin: var(--spacing-md);
+        padding: var(--spacing-lg);
+        max-width: none;
+    }
+    
+    .signup-radio-group {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Indicador de progreso (opcional) */
+.signup-progress {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+}
+
+.signup-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
