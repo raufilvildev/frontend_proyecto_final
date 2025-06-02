@@ -1,0 +1,21 @@
+/* Elimino líneas incorrectas y aseguro estilos para ocupar todo el alto */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 0;
+}
+
+.as-split {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.as-split-area {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Si tienes clases utilitarias en shared, puedes usar .h-100, .flex-grow-1, etc. */
