@@ -1,214 +1,92 @@
-<form
-    [formGroup]="signupForm"
-    (ngSubmit)="onSubmit()"
-    class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8 space-y-6"
->
-    <div class="form-group">
-        <label
-            for="firstName"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Nombre
-        </label>
-        <input
-            type="text"
-            id="firstName"
-            formControlName="firstName"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('firstName')"
-            [class.border-red-500]="checkInvalidControl('firstName')"
-        />
-        @if (checkErrorControl("firstName", "minlength")) {
-            <p class="text-red-500 text-xs mt-1">Debe tener un mínimo de 2 carácteres</p>
-        }
-        @if (checkErrorControl("firstName", "maxlength")) {
-            <p class="text-red-500 text-xs mt-1">Supera el máximo de carácteres</p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="lastName"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Apellidos
-        </label>
-        <input
-            type="text"
-            id="lastName"
-            formControlName="lastName"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('lastName')"
-            [class.border-red-500]="checkInvalidControl('lastName')"
-        />
-        @if (checkErrorControl("lastName", "minlength")) {
-            <p class="text-red-500 text-xs mt-1">Debe tener un mínimo de 2 carácteres</p>
-        }
-        @if (checkErrorControl("lastName", "maxlength")) {
-            <p class="text-red-500 text-xs mt-1">Supera el máximo de carácteres</p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="email"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Email
-        </label>
-        <input
-            type="email"
-            id="email"
-            formControlName="email"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('email')"
-            [class.border-red-500]="checkInvalidControl('email')"
-        />
-        @if (checkErrorControl("email", "pattern")) {
-            <p class="text-red-500 text-xs mt-1">Debe ser un email válido</p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="phone"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Teléfono
-        </label>
-        <input
-            type="text"
-            id="phone"
-            formControlName="phone"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('phone')"
-            [class.border-red-500]="checkInvalidControl('phone')"
-        />
-        @if (checkErrorControl("phone", "pattern")) {
-            <p class="text-red-500 text-xs mt-1">Debe ser un número válido</p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="birthDate"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Fecha de nacimiento
-        </label>
-        <input
-            type="date"
-            id="birthDate"
-            formControlName="birthDate"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('birthDate')"
-            [class.border-red-500]="checkInvalidControl('birthDate')"
-        />
-    </div>
-
-    <div class="form-group">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Género</label>
-        <div class="flex space-x-4">
-            <label class="flex items-center">
-                <input
-                    type="radio"
-                    formControlName="gender"
-                    value="M"
-                    class="mr-2 text-blue-600 focus:ring-blue-500"
-                />
-                <span class="text-sm text-gray-700">Hombre</span>
-            </label>
-            <label class="flex items-center">
-                <input
-                    type="radio"
-                    formControlName="gender"
-                    value="F"
-                    class="mr-2 text-blue-600 focus:ring-blue-500"
-                />
-                <span class="text-sm text-gray-700">Mujer</span>
-            </label>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label
-            for="username"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Nombre de usuario
-        </label>
-        <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('username')"
-            [class.border-red-500]="checkInvalidControl('username')"
-        />
-        @if (checkErrorControl("username", "minlength")) {
-            <p class="text-red-500 text-xs mt-1">Debe tener 3 carácteres</p>
-        }
-        @if (checkErrorControl("username", "maxlength")) {
-            <p class="text-red-500 text-xs mt-1">Supera el máximo de carácteres</p>
-        }
-        @if (checkErrorControl("username", "pattern")) {
-            <p class="text-red-500 text-xs mt-1">Debe contener solo números o letras</p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="password"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Contraseña
-        </label>
-        <input
-            type="password"
-            id="password"
-            formControlName="password"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('password')"
-            [class.border-red-500]="checkInvalidControl('password')"
-        />
-        @if (checkErrorControl("password", "pattern")) {
-            <p class="text-red-500 text-xs mt-1">
-                Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
-            </p>
-        }
-    </div>
-
-    <div class="form-group">
-        <label
-            for="passwordRepeat"
-            class="block text-sm font-medium text-gray-700 mb-2"
-        >
-            Confirmación de contraseña
-        </label>
-        <input
-            type="password"
-            id="passwordRepeat"
-            formControlName="passwordRepeat"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            [class.border-green-500]="checkValidControl('passwordRepeat')"
-            [class.border-red-500]="checkInvalidControl('passwordRepeat')"
-        />
-        @if (signupForm.hasError("passwordNotMatch")) {
-            <p class="text-red-500 text-xs mt-1">Las contraseñas no coinciden</p>
-        }
-    </div>
-    @if (!signupForm.valid) {
-        <p class="text-sm text-gray-600 text-center">Completa todos los campos para poder registrarte</p>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form-root">
+  <div class="signup-form-group">
+    <label for="firstName" class="signup-label">Nombre</label>
+    <input type="text" id="firstName" formControlName="firstName" class="signup-input"
+      [class.valid]="checkValidControl('firstName')" [class.invalid]="checkInvalidControl('firstName')" />
+    @if (checkErrorControl("firstName","minlength")) {
+    <p class="signup-error">Debe tener un mínimo de 2 carácteres</p>
+    } @if (checkErrorControl("firstName","maxlength")) {
+    <p class="signup-error">Supera el máximo de carácteres</p>
     }
-    @if (signupForm.valid) {
-        <p class="text-sm text-green-600 text-center">✅</p>
-    }
+  </div>
 
-    <button
-        type="submit"
-        [disabled]="!signupForm.valid"
-        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed cursor-pointer transition duration-200"
-    >
-        Registrarse
-    </button>
+  <div class="signup-form-group">
+    <label for="lastName" class="signup-label">Apellidos</label>
+    <input type="text" id="lastName" formControlName="lastName" class="signup-input"
+      [class.valid]="checkValidControl('lastName')" [class.invalid]="checkInvalidControl('lastName')" />
+    @if (checkErrorControl("lastName","minlength")) {
+    <p class="signup-error">Debe tener un mínimo de 2 carácteres</p>
+    } @if (checkErrorControl("lastName","maxlength")) {
+    <p class="signup-error">Supera el máximo de carácteres</p>
+    }
+  </div>
+
+  <div class="signup-form-group">
+    <label for="email" class="signup-label">Email</label>
+    <input type="email" id="email" formControlName="email" class="signup-input"
+      [class.valid]="checkValidControl('email')" [class.invalid]="checkInvalidControl('email')" />
+    @if (checkErrorControl("email","pattern")) {
+    <p class="signup-error">Debe ser un email válido</p>
+    }
+  </div>
+
+  <div class="signup-form-group">
+    <label for="birthDate" class="signup-label">Fecha de nacimiento</label>
+    <input type="date" id="birthDate" formControlName="birthDate" class="signup-input"
+      [class.valid]="checkValidControl('birthDate')" [class.invalid]="checkInvalidControl('birthDate')" />
+  </div>
+
+  <div class="signup-form-group">
+    <label class="signup-label">Género</label>
+    <div class="signup-radio-group">
+      <label class="signup-radio-label">
+        <input type="radio" formControlName="gender" value="M" class="signup-radio" />
+        <span>Hombre</span>
+      </label>
+      <label class="signup-radio-label">
+        <input type="radio" formControlName="gender" value="F" class="signup-radio" />
+        <span>Mujer</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="signup-form-group">
+    <label for="username" class="signup-label">Nombre de usuario</label>
+    <input type="text" id="username" formControlName="username" class="signup-input"
+      [class.valid]="checkValidControl('username')" [class.invalid]="checkInvalidControl('username')" />
+    @if (checkErrorControl("username","minlength")) {
+    <p class="signup-error">Debe tener 3 carácteres</p>
+    } @if (checkErrorControl("username","maxlength")) {
+    <p class="signup-error">Supera el máximo de carácteres</p>
+    } @if (checkErrorControl("username","pattern")) {
+    <p class="signup-error">Debe contener solo números o letras</p>
+    }
+  </div>
+
+  <div class="signup-form-group">
+    <label for="password" class="signup-label">Contraseña</label>
+    <input type="password" id="password" formControlName="password" class="signup-input"
+      [class.valid]="checkValidControl('password')" [class.invalid]="checkInvalidControl('password')" />
+    @if (checkErrorControl("password","pattern")) {
+    <p class="signup-error">
+      Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
+    </p>
+    }
+  </div>
+
+  <div class="signup-form-group">
+    <label for="passwordRepeat" class="signup-label">Confirmación de contraseña</label>
+    <input type="password" id="passwordRepeat" formControlName="passwordRepeat" class="signup-input"
+      [class.valid]="checkValidControl('passwordRepeat')" [class.invalid]="checkInvalidControl('passwordRepeat')" />
+    @if (signupForm.hasError('passwordNotMatch')) {
+    <p class="signup-error">Las contraseñas no coinciden</p>
+    }
+  </div>
+  @if (!signupForm.valid) {
+  <p class="signup-help">Completa todos los campos para poder registrarte</p>
+  } @if (signupForm.valid) {
+  <p class="signup-success">✅</p>
+  }
+
+  <button type="submit" [disabled]="!signupForm.valid" class="signup-btn">Registrarse</button>
 </form>
