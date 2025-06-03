@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { config } from '@utils/constants/config';
 
 @Component({
     selector: 'app-footer',
@@ -9,4 +10,5 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
     currentYear = new Date().getFullYear();
+    appName = config.appName;
 }
