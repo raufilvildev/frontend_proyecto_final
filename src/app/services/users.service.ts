@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.test';
 import { IUser } from '../interfaces/iuser.interface';
+import { IToken } from '@app/interfaces/itoken.interface';
+import { ILogin } from '@app/interfaces/ilogin.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -11,31 +13,25 @@ export class UsersService {
     private endpoint = `${environment.host}/user`;
     private httpClient = inject(HttpClient);
 
-    getById(user_id: number) {
-        return lastValueFrom(this.httpClient.get<IUser>(`${this.endpoint}/${user_id}`));
+    getById(token: string) {
+        return lastValueFrom(this.httpClient.get<IUser>(this.endpoint, { headers: { Authorization: token } }));
     }
 
-    checkConfirmEmail(user_id: number) {
-        return lastValueFrom(this.httpClient.get<any>(`${this.endpoint}/confirm_email/${user_id}`));
+    create(user: IUser) {
+        return lastValueFrom(this.httpClient.post<IToken>(`${this.endpoint}/signup`, user));
     }
 
-    create(user: any) {
-        return lastValueFrom(this.httpClient.post<any>(this.endpoint, user));
+    login(loginData: ILogin) {
+      return lastValueFrom(this.httpClient.post<IToken>(`${this.endpoint}/login`, loginData));
     }
 
-    setToken(user_id: number) {
-        return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/${user_id}`, {}));
-    }
-
-    resetToken(user_id: number) {
-        return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/token/reset/${user_id}`, {}));
-    }
-
-    confirmEmail(user_id: number, token_input: string) {
-        return lastValueFrom(this.httpClient.patch<any>(`${this.endpoint}/confirm_email/${user_id}`, { token_input }));
-    }
-
-    remove(user_id: any) {
-        return lastValueFrom(this.httpClient.delete<any>(`${this.endpoint}/${user_id}`));
+    changePassword(token: string, password: string) {
+      return lastValueFrom(
+      this.httpClient.patch<IToken>(
+        `${this.endpoint}/login/change_password`,
+        { password },
+        { headers: { Authorization: token } }
+      )
+      );
     }
 }
