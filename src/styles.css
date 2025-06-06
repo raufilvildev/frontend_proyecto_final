@@ -124,3 +124,6 @@ body {
     --shadow-custom-md: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-custom-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

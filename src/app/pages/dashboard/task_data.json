@@ -1,0 +1,228 @@
+[
+  {
+    "id": 1,
+    "name_list": "To Do",
+    "is_completed": 0,
+    "tasks": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Configurar entorno de desarrollo",
+        "description": "Descripcion de la tarea",
+        "due_date": "2025-06-03",
+        "is_urgent": 0,
+        "is_important": 1,
+        "is_completed": 0,
+        "created_at": "2025-06-03 10:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "10:00:00",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Instalar Angular CLI",
+            "is_completed": 0
+          },
+          {
+            "id": 2,
+            "title": "Configurar Bun",
+            "is_completed": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Diseñar estructura del proyecto",
+        "description": "Definir módulos, componentes y servicios necesarios",
+        "due_date": "2025-06-04",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-06-04 14:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "14:00:00",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Configurar autenticación",
+        "description": "Investigar opciones de autenticación y definir la estrategia",
+        "due_date": "2025-06-05",
+        "is_urgent": 0,
+        "is_important": 1,
+        "is_completed": 0,
+        "created_at": "2025-06-05 09:30:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "09:30:00",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Crear prototipo UI",
+        "description": "Diseñar un prototipo en Figma para la interfaz de usuario",
+        "due_date": "2025-06-06",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-06-06 11:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "11:00:00",
+        "subtasks": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name_list": "In Progress",
+    "is_completed": 0,
+    "tasks": [
+      {
+        "id": 3,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Crear componentes básicos",
+        "description": "Desarrollar los componentes iniciales del sistema",
+        "due_date": "2025-06-02",
+        "is_urgent": 0,
+        "is_important": 1,
+        "is_completed": 0,
+        "created_at": "2025-06-02 13:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "13:00:00",
+        "subtasks": [
+          {
+            "id": 3,
+            "title": "Crear componente de encabezado",
+            "is_completed": 0
+          },
+          {
+            "id": 4,
+            "title": "Crear componente de pie de página",
+            "is_completed": 0
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Implementar API REST",
+        "description": "Desarrollar el backend con NestJS y configurar endpoints",
+        "due_date": "2025-06-03",
+        "is_urgent": 0,
+        "is_important": 1,
+        "is_completed": 0,
+        "created_at": "2025-06-03 15:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "15:00:00",
+        "subtasks": [
+          {
+            "id": 5,
+            "title": "Definir esquema de la base de datos",
+            "is_completed": 0
+          },
+          {
+            "id": 6,
+            "title": "Configurar rutas de la API",
+            "is_completed": 0
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Crear el sistema de drag and drop",
+        "description": "Implementar funcionalidad de arrastrar y soltar con Angular CDK",
+        "due_date": "2025-06-04",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-06-04 16:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "16:00:00",
+        "subtasks": []
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name_list": "Done",
+    "is_completed": 0,
+    "tasks": [
+      {
+        "id": 4,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Definir requerimientos",
+        "description": "Reunión con el equipo para establecer alcance del proyecto",
+        "due_date": "2025-05-31",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-05-31 10:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "10:00:00",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Configurar repositorio Git",
+        "description": "Crear repositorio en GitHub y establecer buenas prácticas",
+        "due_date": "2025-05-30",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-05-30 11:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "11:00:00",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Definir arquitectura de software",
+        "description": "Establecer patrones de diseño y buenas prácticas de código",
+        "due_date": "2025-05-29",
+        "is_urgent": 0,
+        "is_important": 1,
+        "is_completed": 0,
+        "created_at": "2025-05-29 09:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "09:00:00",
+        "subtasks": []
+      }
+    ]
+  },
+  {
+    "id": "orphan_tasks",
+    "name_list": "Tareas sin lista",
+    "is_completed": 0,
+    "tasks": [
+      {
+        "id": 11,
+        "user_id": 1,
+        "course_id": null,
+        "title": "Tarea sin lista de ejemplo",
+        "description": "Esta es una tarea que no está asociada a ninguna lista.",
+        "due_date": "2025-06-07",
+        "is_urgent": 0,
+        "is_important": 0,
+        "is_completed": 0,
+        "created_at": "2025-06-07 10:00:00",
+        "updated_at": "2025-06-05 20:28:00",
+        "time_start": "10:00:00",
+        "subtasks": []
+      }
+    ]
+  }
+]

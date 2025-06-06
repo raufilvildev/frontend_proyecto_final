@@ -1,1 +1,11 @@
-<p>dashboard-task-details works!</p>
+<div class="task-details">
+  @if (subtask) {
+    <h3>{{ subtask.title }}</h3>
+    <div>{{ subtask.description }}</div>
+  } @else if (task) {
+    <h3>{{ task.title }}</h3>
+    <div>{{ task.description }}</div>
+  } @else {
+    <div>Selecciona una tarea o subtarea para ver los detalles.</div>
+  }
+</div>
