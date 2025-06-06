@@ -1,0 +1,40 @@
+<div class="main-tasks">
+  @if (tasks.length > 0) {
+    @for (task of tasks; track task.id) {
+      <div 
+        class="task-row"
+        [class.selected]="selectedTask?.id === task.id && !selectedSubtask"
+        (click)="selectTask(task)">
+        <mat-checkbox class="example-margin" 
+          [checked]="!!task.is_completed"
+          (change)="task.is_completed = $event.checked ? 1 : 0">
+          <span>{{ task.title }}</span>
+        </mat-checkbox>
+        <span class="task-desc">{{ task.description }}</span>
+        <span class="task-date">
+          {{ task.due_date }}
+          @if (task.time_start) {
+            {{ ' ' + task.time_start }}
+          }
+        </span>
+      </div>
+      @if (task.subtasks?.length > 0) {
+        <div class="subtasks">
+          @for (subtask of task.subtasks; track subtask.id) {
+            <div 
+              class="subtask-row"
+              [class.selected]="selectedSubtask?.id === subtask.id"
+              (click)="selectSubtask(subtask, task)">
+              <mat-checkbox class="example-margin" [checked]="!!subtask.is_completed" (change)="subtask.is_completed = $event.checked ? 1 : 0">
+                <span class="subtask-title">{{ subtask.title }}</span>
+              </mat-checkbox>
+              <span class="subtask-desc">{{ subtask.description }}</span>
+            </div>
+          }
+        </div>
+      }
+    }
+  } @else {
+    <div class="no-tasks">No hay tareas en esta lista.</div>
+  }
+</div>

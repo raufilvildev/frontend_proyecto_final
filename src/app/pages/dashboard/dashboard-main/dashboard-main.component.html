@@ -1,1 +1,9 @@
-<p>dashboard-main works!</p>
+<div class="main-tasks">
+  <app-task-item 
+    [tasks]="tasks" 
+    [selectedTask]="selectedTask" 
+    [selectedSubtask]="selectedSubtask"
+    (taskSelected)="selectTask($event)"
+    (subtaskSelected)="selectSubtask($event.subtask, $event.parentTask)">
+  </app-task-item>
+</div>

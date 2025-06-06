@@ -1,13 +1,26 @@
 <as-split direction="horizontal" gutterSize="2" unit="percent">
   <as-split-area [size]="20">
-    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <app-dashboard-sidebar
+      [lists]="lists()"
+      [selectedList]="selectedList()"
+      (listSelected)="selectList($event)">
+    </app-dashboard-sidebar>
   </as-split-area>
 
   <as-split-area [size]="60">
-    <app-dashboard-main></app-dashboard-main>
+    <app-dashboard-main
+      [tasks]="selectedList()?.tasks || []"
+      [selectedTask]="selectedTask()"
+      [selectedSubtask]="selectedSubtask()"
+      (taskSelected)="selectTask($event)"
+      (subtaskSelected)="selectSubtask($event.subtask, $event.parentTask)">
+    </app-dashboard-main>
   </as-split-area>
 
   <as-split-area [size]="20">
-    <app-dashboard-task-details></app-dashboard-task-details>
+    <app-dashboard-task-details
+      [task]="selectedTask()"
+      [subtask]="selectedSubtask()">
+    </app-dashboard-task-details>
   </as-split-area>
 </as-split>

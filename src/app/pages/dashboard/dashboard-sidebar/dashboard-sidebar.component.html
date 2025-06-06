@@ -1,1 +1,9 @@
-<p>dashboard-sidebar works!</p>
+<ul class="sidebar-list">
+  @for (list of lists; track list.id) {
+    <li 
+      [class.selected]="selectedList && selectedList.id === list.id"
+      (click)="selectList(list)">
+      {{ list.name_list }}
+    </li>
+  }
+</ul>
